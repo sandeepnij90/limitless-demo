@@ -1,12 +1,7 @@
 export default function Login() {
   return (
-    <main
-      className="bg-black flex justify-center items-center h-screen bg-no-repeat bg-right-bottom"
-      style={{
-        backgroundImage: "url('/loginImage.png')",
-      }}
-    >
-      <div className="flex justify-center items-center">
+    <main className="bg-[url('/loginImage.png')] bg-black flex justify-center items-center h-screen bg-no-repeat bg-right-bottom">
+      <div className="flex justify-center items-center max-w-[480px]">
         <section className="text-center">
           <h1 className="text-5xl text-white">Limitless Training</h1>
           <h2 className="text-3xl pt-3 text-orange-500">For Dog Trainers</h2>
