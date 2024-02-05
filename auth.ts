@@ -17,15 +17,17 @@ export const authOptions: AuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({token, profile}) {
-      const trainerID = "TESTING_TRAINER_ID" // change
-      token.trainerId = trainerID
+    async jwt({token}) {
       return token
     },
+
     async session({session, token}) {
-      session.user.trainerId = token.trainerId as string
+      const email = session.user.email as string
+      const trainer = await convex.query(api.trainer.getTrainer, { email })
+      session.user.trainerId = trainer?._id || ""
       return session
     },
+
     async signIn({ profile }) {
       await convex.action(api.trainer.signUpTrainer, {email: profile?.email as string, name: profile?.name as string})
       return true

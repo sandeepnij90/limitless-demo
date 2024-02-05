@@ -1,3 +1,5 @@
+import { LoginButton } from "@/components/LoginButton";
+
 export default function Login() {
   return (
     <main className="bg-[url('/loginImage.png')] bg-black flex justify-center items-center h-screen bg-no-repeat bg-right-bottom">
@@ -15,6 +17,9 @@ export default function Login() {
               From giving clients homework, booking lessons, and managing group
               classes.
             </p>
+          </div>
+          <div className="flex justify-center">
+            <LoginButton />
           </div>
         </section>
       </div>
