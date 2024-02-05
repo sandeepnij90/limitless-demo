@@ -39,9 +39,9 @@ export const addTrainer = internalMutation({
     }
 })
 
-export const updateTrainer = mutation({
+export const setupTrainer = mutation({
     args: {
-        id: v.id("trainer"),
+        id: v.id('trainer'),
         phoneNumber: v.string(),
         companyName: v.string(),
     },
@@ -61,9 +61,9 @@ export const getTrainer = query({
 
 export const getTrainerById = query({
     args: {
-        id: v.string()
+        id: v.id("trainer")
     },
     handler: async (ctx, { id }) => {
-        return await ctx.db.query("trainer").filter((q) => q.eq(q.field("email"), id)).first()
+        return await ctx.db.query("trainer").filter((q) => q.eq(q.field("_id"), id)).first()
     }
 })

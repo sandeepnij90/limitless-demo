@@ -1,6 +1,15 @@
 import { LoginButton } from "@/components/LoginButton";
+import { authOptions } from "@/auth";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-export default function Login() {
+export default async function Login() {
+  const session = await getServerSession(authOptions);
+
+  if (session?.user?.trainerId) {
+    redirect("/dashboard");
+  }
+
   return (
     <main className="bg-[url('/loginImage.png')] bg-black flex justify-center items-center h-screen bg-no-repeat bg-right-bottom">
       <div className="flex justify-center items-center max-w-[480px]">
